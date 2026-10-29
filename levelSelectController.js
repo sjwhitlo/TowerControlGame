@@ -1,4 +1,12 @@
-function loadAirports() {
+const airportsUrl = "https://raw.githubusercontent.com/sjwhitlo/TowerControlGame/refs/heads/main/airportList.json";
+
+async function loadAirports() {
+
+	// load airport list
+	airports = await fetch( airportsUrl );
+    airports = await airports.json();
+
+    console.log( airports );
 
 	var body = document.getElementById("airportList");
 	body.innerHTML += `<div id="afw" class="levelIcon">AFW</div>`;
