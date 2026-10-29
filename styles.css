@@ -1,0 +1,63 @@
+*, *::before, *::after {
+  	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: calc( 100vh - 2vh);
+	background-color: dimgray;
+	color: white;
+	font-family: Arial, sans-serif;
+	overflow: hidden;
+}
+
+#screenContent {
+	aspect-ratio: 9 / 19;
+	height: 100%;
+	max-width: 100vw;
+	background-image: linear-gradient(to bottom, lightsteelblue, steelblue);
+	padding: 1vh;
+	border-radius: 2vh;
+}
+
+button {
+	border-radius: 1vh;
+	width: 10vh;
+	height: 6vh;
+	background-image: linear-gradient(to bottom, mediumaquamarine, lightseagreen);
+	color: white;
+	border: 2px solid white;
+	font-size: 2vh;
+}
+
+h1 {
+	font-size: 5vh;
+	text-align: center;
+}
+
+#airportList {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1vh;
+	overflow: scroll;
+}
+
+.levelIcon {
+	aspect-ratio: 5/4;
+	width: 100%;
+	border-radius: 1.5vh;
+	border: 2px solid white;
+	background-image: linear-gradient(to bottom, darkgray, dimgray);
+	color: lightgray;
+	text-align: center;
+	align-content: center;
+	font-size: 4vh;
+	font-weight: bold;
+}
+
+.breakRow {
+	grid-column-start: 1;
+}
