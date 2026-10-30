@@ -7,12 +7,22 @@ async function loadAirports() {
     airports = await airports.json();
 
 	var body = document.getElementById("airportList");
+	
+	for (var i = 0; i < airports.length; i++) {
+		const newAirport = document.createElement( "div" );
 
-	body.innerHTML += airports;
+		newAirport.id = airports[i];
+		newAirport.textContent = airports[i].toUpperCase();
+		newAirport.classList.add( "levelIcon" );
+		newAirport.addEventListener('click', () => {
+			localStorage.setItem('selectedAirport', newAirport.id);
+  			window.location.href = "playLevel.html";
+		});
 
-	for (var i = airports.length; i < 0; i++) {
-		body.innerHTML += `<div id="${airports[i]}" class="levelIcon">${airports[i]}</div>`;
+		if ( i > 0 && airports[i].charAt(0) !== airports[i-1].charAt(0) ) {
+			newAirport.classList.add( "breakRow" );
+		}
 
-		// if starts with different letter of alphabet, add class 'breakRow'
+		body.append( newAirport );
 	}
 }
