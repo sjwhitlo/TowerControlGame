@@ -64,6 +64,10 @@ h1 {
 
 #airfieldMap {
 	display: grid;
+	border: 2px solid black;
+	background-color: darkgreen;
+	align-items: center;
+	align-content: center;
 }
 
 .tile {
