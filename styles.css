@@ -61,3 +61,20 @@ h1 {
 .breakRow {
 	grid-column-start: 1;
 }
+
+#airfieldMap {
+	display: grid;
+}
+
+.tile {
+	aspect-ratio: 1;
+}
+.tile_0 {
+	background-color: darkgreen;
+}
+.tile_1 {
+	background-color: dimgray;
+}
+.tile_2 {
+	background-color: lightgray;
+}

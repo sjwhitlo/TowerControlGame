@@ -36,7 +36,7 @@ function drawTile( tile, x, y ) {
 	const newTile = document.createElement( "div" );
 
 	newTile.id = "tile" + x + "_" + y;
-	newTile.classList.add( "tile", tile );
+	newTile.classList.add( "tile", "tile_" + tile );
 
 	document.getElementById("airfieldMap").append(newTile);
 }
