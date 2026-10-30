@@ -3,7 +3,7 @@
 		"airport_id": "clt",
 		"name": "Charlotte-Douglas International Airport",
 		"airfield_map": {
-			"cols": 18,
+			"cols": 25,
 			"rows": 15,
 			"layers": [
 				[
