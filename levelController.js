@@ -1,7 +1,13 @@
 const tileAtlasUrl = "https://raw.githubusercontent.com/sjwhitlo/TowerControlGame/refs/heads/main/tileAtlas.png";
 const airfieldUrl = "https://raw.githubusercontent.com/sjwhitlo/TowerControlGame/refs/heads/main/Airports/";
-var airfieldData = [];
 const tileSize = 64;
+const tileOutputSize = 1;
+const updatedTileSize = tileSize * tileOutputSize;
+const atlasCol = 11;
+const atlasRow = 11;
+const tileAtlas = new Image();
+
+var airfieldData = [];
 
 async function loadAirport() {
 	const airportName = localStorage.getItem("selectedAirport");
@@ -14,33 +20,43 @@ async function loadAirport() {
 	document.getElementById("airportName").textContent = airfieldData;
 	document.getElementById("airportName").textContent = airfieldData[0].name;
 
-	drawBackground();
+	tileAtlas.src = tileAtlasUrl;
+	tileAtlas.onload = drawBackground();
 }
 
 function drawBackground() {
-	let columns = airfieldData[0].airfield_map.cols;
-	let rows = airfieldData[0].airfield_map.rows;
+	let airfieldMap = airfieldData[0].airfield_map
+	let columns = airfieldMap.cols;
+	let rows = airfieldMap.rows;
 
 	const gridContainer = document.getElementById('airfieldMap');
 	gridContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
 	gridContainer.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+	gridContainer.style.width = columns * tileSize;
+	gridContainer.style.height = rows * tileSize;
 	
 	for (let row = 0; row < rows; row++) {
   		for (let column = 0; column < columns; column++) {
-    		const tile = airfieldData[0].airfield_map.layers[0][row * columns + column];
+    		const tileValue = airfieldMap.layers.background[ row * columns + column] ;
     		const x = column * tileSize;
     		const y = row * tileSize;
-    		drawTile(tile, x, y);
+    		drawTile( tileValue, x, y );
   		}
 	}
 }
 
-function drawTile( tile, x, y ) {
-	const newTile = document.createElement( "div" );
+function drawTile( tileValue, col, row ) {
+	const canvas = document.getElementById('airfieldMap');
+	const ctx = canvas.getContext('2d');
 
-	newTile.id = "tile" + x + "_" + y;
-	newTile.classList.add( "tile", "tile_" + tile );
+	if( tileValue != 0 ) {
+        tileValue -= 1;
+        sourceY = Math.floor( tileValue / atlasCol ) * tileSize;
+        sourceX = ( tileValue % atlasCol ) * tileSize;
+        ctx.drawImage( tileAtlas, sourceX, sourceY, tileSize, tileSize,
+        	row * tileOutputSize, col * tileOutputSize, updatedTileSize, updatedTileSize );
+    }
 
-	document.getElementById("airfieldMap").append(newTile);
+	// document.getElementById("airfieldMap").append(newTile);
 }
 
