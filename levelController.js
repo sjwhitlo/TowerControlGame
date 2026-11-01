@@ -1,6 +1,7 @@
+const tileAtlasUrl = "https://raw.githubusercontent.com/sjwhitlo/TowerControlGame/refs/heads/main/tileAtlas.png";
 const airfieldUrl = "https://raw.githubusercontent.com/sjwhitlo/TowerControlGame/refs/heads/main/Airports/";
 var airfieldData = [];
-const tileSize = 5;
+const tileSize = 64;
 
 async function loadAirport() {
 	const airportName = localStorage.getItem("selectedAirport");
