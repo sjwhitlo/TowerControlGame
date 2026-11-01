@@ -27,8 +27,8 @@ async function loadAirport() {
 
 function drawBackground() {
 	let airfieldMap = airfieldData[0].airfield_map
-	let columns = airfieldMap.cols;
 	let rows = airfieldMap.rows;
+	let columns = airfieldMap.layers.background.length / rows;
 
 	const gridContainer = document.getElementById('airfieldMap');
 	// gridContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
